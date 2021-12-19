@@ -196,25 +196,6 @@ variable "log_analytics_workspace" {
   type = string
 }
 
-variable "datadog_enable" {
-  type = bool
-}
-
-variable "datadog_enable_log" {
-  type    = bool
-  default = true
-}
-
-variable "datadog_enable_apm" {
-  type    = bool
-  default = true
-}
-
-variable "datadog_api_key" {
-  type    = string
-  default = ""
-}
-
 variable "aks_cluster_rolebindings" {
   type = map(object({
     name = string
