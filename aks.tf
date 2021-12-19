@@ -36,6 +36,18 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   }
 
+  role_based_access_control {
+    enabled = var.role_based_access_control_enable
+    dynamic azure_active_directory {
+      for_each = var.role_based_access_control_enable == true ? [1] : []
+      content {
+        managed = true
+        tenant_id = "d1ee1acd-bc7a-4bc4-a787-938c49a83906"
+        admin_group_object_ids = var.admin_group_ids
+      }
+    }
+  }
+
   network_profile {
     network_plugin     = var.network_plugin
     network_policy     = var.network_plugin == "azure" ? var.network_policy : null
