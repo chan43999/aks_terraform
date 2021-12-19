@@ -34,6 +34,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     node_taints           = []
     enable_node_public_ip = false
 
+    vnet_subnet_id = azurerm_virtual_network.vnet.subnet.*.id[0]
   }
 
   role_based_access_control {
