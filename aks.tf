@@ -43,7 +43,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
       for_each = var.role_based_access_control_enable == true ? [1] : []
       content {
         managed = true
-        tenant_id = "d1ee1acd-bc7a-4bc4-a787-938c49a83906"
+        tenant_id = var.azuread_tenant_id
         admin_group_object_ids = var.admin_group_ids
       }
     }

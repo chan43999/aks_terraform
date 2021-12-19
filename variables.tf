@@ -117,6 +117,11 @@ variable "admin_group_ids" {
   default = []
 }
 
+variable "azuread_tenant_id" {
+  type = string
+  default = ""
+}
+
 variable "ip_addresses" {
   type = object({
     vnet_address_space    = list(string)
